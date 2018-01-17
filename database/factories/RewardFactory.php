@@ -16,6 +16,8 @@ use Faker\Generator as Faker;
 $factory->define(App\Reward::class, function (Faker $faker) {
     return [
         'token_id' => factory(Token::class)->create()->id,
+        'tx_hash' => hash('sha256', $faker->word),
+        'status' => 'valid',
         'reward_token' => strtoupper($faker->word),
         'quantity_per_unit' => $faker->randomDigitNotNull(),
         'block_index' => $faker->numberBetween(300000, 500000),

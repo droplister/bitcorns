@@ -12,7 +12,7 @@ class Reward extends Model
      * @var array
      */
     protected $fillable = [
-        'token_id', 'reward_token', 'quantity_per_unit', 'block_index',
+        'token_id', 'tx_hash', 'status', 'reward_token', 'quantity_per_unit', 'block_index',
     ];
 
     /**

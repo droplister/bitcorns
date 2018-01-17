@@ -51,9 +51,9 @@ class UpdateTokenInfo implements ShouldQueue
         $name = $last_data->asset_longname ? $last_data->asset_longname : $last_data->asset;
         $quantity = array_sum(array_column($issuances,'quantity'));
 
-        Token::updateOrCreate(
-        ['name' => $name],
-        [
+        Token::updateOrCreate([
+            'name' => $name
+        ],[
             'type'        => $this->type,
             'name'        => $name,
             'description' => $last_data->description,

@@ -17,6 +17,8 @@ class CreateRewardsTable extends Migration
             $table->increments('id');
             $table->integer('token_id')->unsigned()->index();
             $table->foreign('token_id')->references('id')->on('tokens');
+            $table->string('tx_hash')->unique();
+            $table->string('status');
             $table->string('reward_token');
             $table->bigInteger('quantity_per_unit')->unsigned();
             $table->integer('block_index')->unsigned();
