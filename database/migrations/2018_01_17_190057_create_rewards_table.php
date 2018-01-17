@@ -15,6 +15,11 @@ class CreateRewardsTable extends Migration
     {
         Schema::create('rewards', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('token_id')->unsigned()->index();
+            $table->foreign('token_id')->references('id')->on('tokens');
+            $table->string('reward_token');
+            $table->bigInteger('quantity_per_unit')->unsigned();
+            $table->integer('block_index')->unsigned();
             $table->timestamps();
         });
     }

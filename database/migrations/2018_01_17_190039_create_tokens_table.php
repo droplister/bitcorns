@@ -15,6 +15,14 @@ class CreateTokensTable extends Migration
     {
         Schema::create('tokens', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
+            $table->string('name')->unique();
+            $table->string('description')->nullable();
+            $table->string('source');
+            $table->string('issuer');
+            $table->bigInteger('quantity')->unsigned();
+            $table->boolean('divisible');
+            $table->boolean('locked');
             $table->timestamps();
         });
     }

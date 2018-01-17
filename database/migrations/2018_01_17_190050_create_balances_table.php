@@ -15,6 +15,11 @@ class CreateBalancesTable extends Migration
     {
         Schema::create('balances', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('player_id')->unsigned()->index();
+            $table->foreign('player_id')->references('id')->on('players');
+            $table->integer('token_id')->unsigned()->index();
+            $table->foreign('token_id')->references('id')->on('tokens');
+            $table->bigInteger('quantity')->unsigned();
             $table->timestamps();
         });
     }

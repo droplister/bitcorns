@@ -15,6 +15,11 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('address')->unique();
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->string('location')->nullable();
+            $table->string('image_url')->default(env('DEFAULT_IMG_URL'));
             $table->timestamps();
         });
     }
