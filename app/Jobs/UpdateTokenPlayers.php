@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class UpdateTokenHolders implements ShouldQueue
+class UpdateTokenPlayers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -44,7 +44,7 @@ class UpdateTokenHolders implements ShouldQueue
         foreach($players as $player)
         {
             Player::firstOrCreate([
-                'address' => $player->address
+                'address' => $player['address'],
             ]);
         }
     }

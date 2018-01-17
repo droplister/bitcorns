@@ -49,13 +49,13 @@ class UpdateTokenBalances implements ShouldQueue
 
         foreach($balances as $balance)
         {
-            $player = Player::whereAddress($balance->address)->first();
+            $player = Player::whereAddress($balance['address'])->first();
 
             Balance::updateOrCreate([
                 'player_id' => $player->id,
                 'token_id' => $this->token->id,
             ],[
-                'quantity' => $balance->quantity,
+                'quantity' => $balance['quantity'],
             ]);
         }
     }

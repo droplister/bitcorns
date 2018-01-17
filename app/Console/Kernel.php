@@ -13,7 +13,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\BlockHeightMonitoring::class,
+        Commands\UpdateTokenInfoCommand::class,
+        Commands\UpdateTokenPlayersCommand::class,
+        Commands\UpdateTokenRewardsCommand::class,
+        Commands\UpdateTokenBalancesCommand::class,
     ];
 
     /**

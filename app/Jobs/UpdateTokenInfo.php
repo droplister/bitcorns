@@ -16,20 +16,20 @@ class UpdateTokenInfo implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $counterparty;
+    protected $token;
     protected $type;
-    protected $value;
 
     /**
      * Counterparty API
      *
      * @return void
      */
-    public function __construct($type, $value)
+    public function __construct($type, $token)
     {
         $this->counterparty = new Client(env('CP_API'));
         $this->counterparty->authentication(env('CP_USER'), env('CP_PASS'));
+        $this->token = $token;
         $this->type = $type;
-        $this->value = $value;
     }
 
     /**
@@ -43,7 +43,7 @@ class UpdateTokenInfo implements ShouldQueue
             'filters' => [
                 'field' => 'asset',
                 'op' => '==',
-                'value' => $this->value,
+                'value' => $this->token,
             ],
         ]);
 
