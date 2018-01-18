@@ -2,26 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Token;
-use App\Jobs\UpdateTokenInfo;
+use App\Jobs\UpdateCrops;
 
 use Illuminate\Console\Command;
 
-class UpdateTokenInfoCommand extends Command
+class UpdateCropsCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'update:tokens';
+    protected $signature = 'update:crops';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update Token Info';
+    protected $description = 'Update Crops';
 
     /**
      * Create a new command instance.
@@ -40,12 +39,7 @@ class UpdateTokenInfoCommand extends Command
      */
     public function handle()
     {
-        $tokens = Token::get();
-
-        foreach($tokens as $token)
-        {
-            UpdateTokenInfo::dispatch($token->type, $token->name);
-            $this->comment('UPDATING TOKEN: ' . $token->name);
-        }
+        UpdateCrops::dispatch();
+        $this->comment('UPDATE CROPS');
     }
 }

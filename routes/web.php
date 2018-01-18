@@ -16,11 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/farmers', [
-    'as'   => 'players.index',
-    'uses' => 'PlayersController@index',
+    'as'   => 'farmers.index',
+    'uses' => 'FarmersController@index',
 ]);
 
-Route::get('/farmer/{player}', [
-    'as'   => 'players.show',
-    'uses' => 'PlayersController@show',
+Route::get('/farmer/{farmer}', [
+    'as'   => 'farmers.show',
+    'uses' => 'FarmersController@show',
 ]);

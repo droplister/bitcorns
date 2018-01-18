@@ -4,11 +4,10 @@ namespace App\Console\Commands;
 
 use Cache;
 use JsonRPC\Client;
-use App\Jobs\UpdateTokenBalances;
 
 use Illuminate\Console\Command;
 
-class BlockHeightMonitoring extends Command
+class FarmersAlmanacCommand extends Command
 {
     protected $counterparty;
 
@@ -17,7 +16,7 @@ class BlockHeightMonitoring extends Command
      *
      * @var string
      */
-    protected $signature = 'monitor:blocks';
+    protected $signature = 'farmers:almanac';
 
     /**
      * The console command description.
@@ -46,15 +45,13 @@ class BlockHeightMonitoring extends Command
      */
     public function handle()
     {
-        // Very Inefficient Method ATM
         $info = $this->counterparty->execute('get_running_info');
 
         if($info['bitcoin_block_count'] !== Cache::get('block_height'))
         {
-            $this->call('update:tokens');
-            $this->call('update:players');
-            $this->call('update:rewards');
-            $this->call('update:balances');
+            $this->call('update:farmers');
+            $this->call('update:crops');
+            $this->call('update:harvests');
 
             Cache::forget('block_height');
             Cache::forever('block_height', $info['bitcoin_block_count']);

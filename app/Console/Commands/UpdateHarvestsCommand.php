@@ -2,26 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Token;
-use App\Jobs\UpdateTokenBalances;
+use App\Jobs\UpdateHarvests;
 
 use Illuminate\Console\Command;
 
-class UpdateTokenBalancesCommand extends Command
+class UpdateHarvestsCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'update:balances';
+    protected $signature = 'update:harvests';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update Token Balances';
+    protected $description = 'Update Harvests';
 
     /**
      * Create a new command instance.
@@ -40,12 +39,7 @@ class UpdateTokenBalancesCommand extends Command
      */
     public function handle()
     {
-        $tokens = Token::get();
-
-        foreach($tokens as $token)
-        {
-            UpdateTokenBalances::dispatch($token);
-            $this->comment('UPDATING BALANCES: ' . $token->name);
-        }
+        UpdateHarvests::dispatch();
+        $this->comment('UPDATE HARVESTS');
     }
 }

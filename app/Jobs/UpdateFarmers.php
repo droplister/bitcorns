@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Player;
 use JsonRPC\Client;
 
 use Illuminate\Bus\Queueable;
@@ -11,23 +10,21 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class UpdateTokenPlayers implements ShouldQueue
+class UpdateFarmers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $counterparty;
-    protected $token;
 
     /**
      * Counterparty API
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct()
     {
         $this->counterparty = new Client(env('CP_API'));
         $this->counterparty->authentication(env('CP_USER'), env('CP_PASS'));
-        $this->token = $token;
     }
 
     /**
@@ -37,14 +34,14 @@ class UpdateTokenPlayers implements ShouldQueue
      */
     public function handle()
     {
-        $players = $this->counterparty->execute('get_holders', [
-            'asset' => $this->token,
+        $farmers = $this->counterparty->execute('get_holders', [
+            'asset' => env('CROPS'),
         ]);
 
-        foreach($players as $player)
+        foreach($farmers as $farmer)
         {
-            Player::firstOrCreate([
-                'address' => $player['address'],
+            \App\Farmer::firstOrCreate([
+                'address' => $farmer['address']
             ]);
         }
     }

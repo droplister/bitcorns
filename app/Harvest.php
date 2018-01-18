@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reward extends Model
+class Harvest extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,16 +12,16 @@ class Reward extends Model
      * @var array
      */
     protected $fillable = [
-        'token_id', 'tx_hash', 'status', 'reward_token', 'quantity_per_unit', 'block_index',
+        'bitcorn_total', 'bitcorn_per_crops', 'block_index',
     ];
 
     /**
-     * Reward Players
+     * Harvest Farmers
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function players()
+    public function farmers()
     {
-        return $this->belongsToMany(Player::class, 'player_reward')->withPivot('quantity_rewarded');
+        return $this->belongsToMany(Farmer::class, 'farmer_harvest')->withPivot('bitcorn');
     }
 }

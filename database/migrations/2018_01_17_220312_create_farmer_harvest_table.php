@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlayerRewardTable extends Migration
+class CreateFarmerHarvestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePlayerRewardTable extends Migration
      */
     public function up()
     {
-        Schema::create('player_reward', function (Blueprint $table) {
-            $table->integer('player_id')->unsigned()->index();
-            $table->integer('reward_id')->unsigned()->index();
-            $table->bigInteger('quantity_rewarded')->unsigned();
+        Schema::create('farmer_harvest', function (Blueprint $table) {
+            $table->integer('farmer_id')->unsigned()->index();
+            $table->integer('harvest_id')->unsigned()->index();
+            $table->bigInteger('bitcorn')->unsigned();
         });
     }
 
@@ -27,6 +27,6 @@ class CreatePlayerRewardTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('player_reward');
+        Schema::dropIfExists('farmer_harvest');
     }
 }

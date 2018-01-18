@@ -23,7 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::model('player', \App\Player::class);
+        Route::model('farmer', \App\Farmer::class);
 
         parent::boot();
     }

@@ -2,26 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Token;
-use App\Jobs\UpdateTokenRewards;
+use App\Jobs\UpdateFarmers;
 
 use Illuminate\Console\Command;
 
-class UpdateTokenRewardsCommand extends Command
+class UpdateFarmersCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'update:rewards';
+    protected $signature = 'update:farmers';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update Token Rewards';
+    protected $description = 'Update Farmers';
 
     /**
      * Create a new command instance.
@@ -40,12 +39,7 @@ class UpdateTokenRewardsCommand extends Command
      */
     public function handle()
     {
-        $tokens = Token::whereType('points')->get();
-
-        foreach($tokens as $token)
-        {
-            UpdateTokenRewards::dispatch($token);
-            $this->comment('UPDATING REWARDS: ' . $token->name);
-        }
+        UpdateFarmers::dispatch();
+        $this->comment('UPDATE FARMERS');
     }
 }

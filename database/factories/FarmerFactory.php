@@ -13,13 +13,8 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Balance::class, function (Faker $faker) {
-    $token = factory(Token::class)->create();
+$factory->define(App\Farmer::class, function (Faker $faker) {
     return [
-        'player_id' => factory(Player::class)->create()->id,
-        'token_id' => $token->id,
-        'token_type' => $token->type,
-        'token_name' => $token->name,
-        'quantity' => $faker->randomNumber(),
+        'address' => '1' . str_replace(':', '', $faker->ipv6),
     ];
 });
