@@ -19,6 +19,8 @@ class CreateBalancesTable extends Migration
             $table->foreign('player_id')->references('id')->on('players');
             $table->integer('token_id')->unsigned()->index();
             $table->foreign('token_id')->references('id')->on('tokens');
+            $table->string('token_type');
+            $table->string('token_name');
             $table->bigInteger('quantity')->unsigned();
             $table->timestamps();
         });

@@ -14,9 +14,12 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Balance::class, function (Faker $faker) {
+    $token = factory(Token::class)->create();
     return [
         'player_id' => factory(Player::class)->create()->id,
-        'token_id' => factory(Token::class)->create()->id,
+        'token_id' => $token->id,
+        'token_type' => $token->type,
+        'token_name' => $token->name,
         'quantity' => $faker->randomNumber(),
     ];
 });

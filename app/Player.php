@@ -31,9 +31,10 @@ class Player extends Model
      */
     public function getHasAccessAttribute()
     {
-        return $this->balances()->whereHas('token', function($q){
-            $q->where('type', '=', 'access');
-        })->count();
+        return $this->balances()
+                    ->where('token_type', '=', 'access')
+                    ->where('quantity', '>', 0)
+                    ->count();
     }
 
     /**
@@ -43,9 +44,10 @@ class Player extends Model
      */
     public function getHasPointsAttribute()
     {
-        return $this->balances()->whereHas('token', function($q){
-            $q->where('type', '=', 'points');
-        })->count();
+        return $this->balances()
+                    ->where('token_type', '=', 'points')
+                    ->where('quantity', '>', 0)
+                    ->count();
     }
 
     /**
@@ -55,7 +57,7 @@ class Player extends Model
      */
     public function balances()
     {
-        return $this->hasMany(Balance::class)->with('token');
+        return $this->hasMany(Balance::class);
     }
 
     /**
@@ -66,5 +68,15 @@ class Player extends Model
     public function rewards()
     {
         return $this->belongsToMany(Reward::class, 'player_reward')->withPivot('quantity_rewarded');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'address';
     }
 }

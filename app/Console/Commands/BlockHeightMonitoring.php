@@ -53,8 +53,8 @@ class BlockHeightMonitoring extends Command
         {
             $this->call('update:tokens');
             $this->call('update:players');
-            $this->call('update:balances');
             $this->call('update:rewards');
+            $this->call('update:balances');
 
             Cache::forget('block_height');
             Cache::forever('block_height', $info['bitcoin_block_count']);

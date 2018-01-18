@@ -56,6 +56,8 @@ class UpdateTokenBalances implements ShouldQueue
                 Balance::updateOrCreate([
                     'player_id' => $player->id,
                     'token_id' => $this->token->id,
+                    'token_name' => $this->token->name,
+                    'token_type' => $this->token->type,
                 ],[
                     'quantity' => $balance['quantity'],
                 ]);

@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/farmers', [
+    'as'   => 'players.index',
+    'uses' => 'PlayersController@index',
+]);
+
+Route::get('/farmer/{player}', [
+    'as'   => 'players.show',
+    'uses' => 'PlayersController@show',
+]);

@@ -31,6 +31,6 @@ class Token extends Model
      */
     public function getQuantityNormalizedAttribute()
     {
-        return $this->divisible ? round($this->quantity / 100000000, 8) : $this->quantity;
+        return $this->divisible ? number_format($this->quantity / 100000000, 8) : $this->quantity;
     }
 }
