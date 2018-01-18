@@ -20,7 +20,11 @@ Route::get('/farmers', [
     'uses' => 'FarmersController@index',
 ]);
 
-Route::get('/farmer/{farmer}', [
+Route::get('/address/{farmer}', [
     'as'   => 'farmers.show',
     'uses' => 'FarmersController@show',
 ]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

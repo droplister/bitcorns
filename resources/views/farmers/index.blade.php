@@ -18,7 +18,7 @@
   <tr>
     <th>{{ $loop->index + 1 }}</th>
     <th>{{ $farmer->name }}</th>
-    <th>{{ $farmer->address }}</th>
+    <th><a href="{{ url(route('farmers.show', ['farmer' => $farmer->address])) }}">{{ $farmer->address }}</a></th>
     <th>{{ $farmer->crops_owned_normalized }}</th>
     <th>{{ $farmer->bitcorn_owned }}</th>
     <th>{{ $farmer->bitcorn_harvested }}</th>

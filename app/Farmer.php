@@ -21,9 +21,20 @@ class Farmer extends Model
      * @var array
      */
     protected $appends = [
+        'display_name',
         'has_crops', 'crops_owned_normalized',
         'has_bitcorn', 'has_harvested', 
     ];
+
+    /**
+     * Display Name
+     *
+     * @var string
+     */
+    public function getDisplayNameAttribute()
+    {
+        return $this->name ? $this->name : $this->address;
+    }
 
     /**
      * Has Crops

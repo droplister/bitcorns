@@ -17,9 +17,9 @@ class CreateFarmersTable extends Migration
             $table->increments('id');
             $table->string('address')->unique();
             $table->string('name')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description');
             $table->string('location')->nullable();
-            $table->string('image_url')->default(env('DEFAULT_IMG_URL'));
+            $table->string('image_url');
             $table->bigInteger('crops_owned')->unsigned()->default(0);
             $table->bigInteger('bitcorn_owned')->unsigned()->default(0);
             $table->bigInteger('bitcorn_harvested')->unsigned()->default(0);
