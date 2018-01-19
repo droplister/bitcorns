@@ -2,25 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\UpdateFarmers;
+use App\Jobs\UpdateFarms;
 
 use Illuminate\Console\Command;
 
-class UpdateFarmersCommand extends Command
+class UpdateFarmsCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'update:farmers';
+    protected $signature = 'update:farms';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update Farmers';
+    protected $description = 'Update Farms';
 
     /**
      * Create a new command instance.
@@ -39,7 +39,7 @@ class UpdateFarmersCommand extends Command
      */
     public function handle()
     {
-        UpdateFarmers::dispatch();
-        $this->comment('UPDATE FARMERS');
+        UpdateFarms::dispatch();
+        $this->comment('UPDATE FARMS');
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Farmer extends Model
+class Farm extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -83,7 +83,7 @@ class Farmer extends Model
      */
     public function harvests()
     {
-        return $this->belongsToMany(Harvest::class, 'farmer_harvest')->withPivot('bitcorn');
+        return $this->belongsToMany(Harvest::class, 'farm_harvest')->withPivot('bitcorn');
     }
 
     /**

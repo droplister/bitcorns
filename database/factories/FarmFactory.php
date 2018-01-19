@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Farmer::class, function (Faker $faker) {
+$factory->define(App\Farm::class, function (Faker $faker) {
     return [
         'address' => '1' . str_replace(':', '', $faker->ipv6),
     ];

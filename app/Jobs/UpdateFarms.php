@@ -10,7 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class UpdateFarmers implements ShouldQueue
+class UpdateFarms implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -34,14 +34,14 @@ class UpdateFarmers implements ShouldQueue
      */
     public function handle()
     {
-        $farmers = $this->counterparty->execute('get_holders', [
+        $farms = $this->counterparty->execute('get_holders', [
             'asset' => env('CROPS'),
         ]);
 
-        foreach($farmers as $farmer)
+        foreach($farms as $farm)
         {
-            \App\Farmer::firstOrCreate([
-                'address' => $farmer['address']
+            \App\Farm::firstOrCreate([
+                'address' => $farm['address']
             ],[
                 'image_url' => $this->basicImg(),
                 'description' => $this->cornyQuote(),
@@ -53,7 +53,17 @@ class UpdateFarmers implements ShouldQueue
     {
         $images = [
             'http://bitcorns.com/img/farm-1.jpg',
-            'http://bitcorns.com/img/farm-1.jpg',
+            'http://bitcorns.com/img/farm-2.jpg',
+            'http://bitcorns.com/img/farm-3.jpg',
+            'http://bitcorns.com/img/farm-4.jpg',
+            'http://bitcorns.com/img/farm-5.jpg',
+            'http://bitcorns.com/img/farm-6.jpg',
+            'http://bitcorns.com/img/farm-7.jpg',
+            'http://bitcorns.com/img/farm-8.jpg',
+            'http://bitcorns.com/img/farm-9.jpg',
+            'http://bitcorns.com/img/farm-10.jpg',
+            'http://bitcorns.com/img/farm-11.jpg',
+            'http://bitcorns.com/img/farm-12.jpg',
         ];
 
         return $images[array_rand($images)];

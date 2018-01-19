@@ -11,20 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/farmers', [
-    'as'   => 'farmers.index',
-    'uses' => 'FarmersController@index',
+Route::get('/', [
+    'as'   => 'home',
+    'uses' => 'HomeController@index',
 ]);
 
-Route::get('/address/{farmer}', [
-    'as'   => 'farmers.show',
-    'uses' => 'FarmersController@show',
+Route::get('/farms', [
+    'as'   => 'farms.index',
+    'uses' => 'FarmsController@index',
 ]);
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/address/{farm}', [
+    'as'   => 'farms.show',
+    'uses' => 'FarmsController@show',
+]);
 
+Route::get('/bitcorn', [
+    'as'   => 'pages.bitcorn',
+    'uses' => 'PagesController@showBitcorn',
+]);
+
+Route::get('/crops', [
+    'as'   => 'pages.crops',
+    'uses' => 'PagesController@showCrops',
+]);

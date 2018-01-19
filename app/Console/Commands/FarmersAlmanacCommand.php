@@ -49,7 +49,7 @@ class FarmersAlmanacCommand extends Command
 
         if($info['bitcoin_block_count'] !== Cache::get('block_height'))
         {
-            $this->call('update:farmers');
+            $this->call('update:farms');
             $this->call('update:crops');
             $this->call('update:harvests');
 

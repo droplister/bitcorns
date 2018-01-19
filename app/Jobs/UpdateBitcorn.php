@@ -10,7 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class UpdateFarmersHarvest implements ShouldQueue
+class UpdateBitcorn implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -60,16 +60,16 @@ class UpdateFarmersHarvest implements ShouldQueue
 
         foreach($bitcorns as $bitcorn)
         {
-            $farmer = \App\Farmer::whereAddress($bitcorn['address'])->first();
+            $farm = \App\Farm::whereAddress($bitcorn['address'])->first();
 
-            $farmer->harvests()->sync([
+            $farm->harvests()->sync([
                 $this->harvest->id => [
                     'bitcorn' => $bitcorn['quantity']
                 ],
             ]);
 
-            $farmer->update([
-                'bitcorn_harvested' => $farmer->harvests()->sum('bitcorn'),
+            $farm->update([
+                'bitcorn_harvested' => $farm->harvests()->sum('bitcorn'),
             ]);
         }
     }

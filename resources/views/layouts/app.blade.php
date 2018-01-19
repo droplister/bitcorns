@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', config('app.name', 'Laravel'))</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,9 +37,27 @@
           </div>
         </div>
       </div>
-      <div class="navbar navbar-dark bg-dark">
+      <div class="navbar navbar-dark navbar-expand bg-dark">
         <div class="container d-flex justify-content-between">
           <a href="{{ url('/') }}" class="navbar-brand">&#x1f33d; {{ config('app.name', 'Laravel') }}</a>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url(route('farms.index')) }}">Farms</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="almanac_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Almanac</a>
+                <div class="dropdown-menu" aria-labelledby="almanac_dropdown">
+                  <a class="dropdown-item" href="{{ url(route('pages.bitcorn')) }}">Bitcorn Harvesting</a>
+                  <a class="dropdown-item" href="{{ url(route('pages.crops')) }}">Initial Corn Offering</a>
+                  <a class="dropdown-item" href="https://medium.com/@BitcornCrops" target="_blank">News and Updates</a>
+                </div>
+              </li>
+            </ul>
+          </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

@@ -22,6 +22,6 @@ class Harvest extends Model
      */
     public function farmers()
     {
-        return $this->belongsToMany(Farmer::class, 'farmer_harvest')->withPivot('bitcorn');
+        return $this->belongsToMany(Farm::class, 'farm_harvest')->withPivot('bitcorn');
     }
 }

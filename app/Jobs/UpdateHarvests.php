@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use JsonRPC\Client;
-use App\Jobs\UpdateFarmersHarvest;
+use App\Jobs\UpdateBitcorn;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -54,7 +54,7 @@ class UpdateHarvests implements ShouldQueue
 
             if($harvest->wasRecentlyCreated)
             {
-                UpdateFarmersHarvest::dispatch($harvest);
+                UpdateBitcorn::dispatch($harvest);
             }
         }
     }

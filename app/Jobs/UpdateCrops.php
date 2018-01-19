@@ -51,9 +51,9 @@ class UpdateCrops implements ShouldQueue
 
             foreach($balances as $balance)
             {
-                if($farmer = \App\Farmer::whereAddress($balance['address'])->first())
+                if($farm = \App\Farm::whereAddress($balance['address'])->first())
                 {
-                    $farmer->update([
+                    $farm->update([
                         $column => $balance['quantity']
                     ]);
                 }

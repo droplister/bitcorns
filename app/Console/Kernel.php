@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\FarmersAlmanacCommand::class,
         Commands\UpdateCropsCommand::class,
-        Commands\UpdateFarmersCommand::class,
+        Commands\UpdateFarmsCommand::class,
         Commands\UpdateHarvestsCommand::class,
     ];
 
