@@ -15,7 +15,9 @@ class CreateFarmsTable extends Migration
     {
         Schema::create('farms', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('tx_index')->unsigned()->nullable();
             $table->string('address')->unique();
+            $table->string('type')->nullable();
             $table->string('name')->nullable();
             $table->string('description');
             $table->string('location')->nullable();

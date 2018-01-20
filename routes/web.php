@@ -16,7 +16,7 @@ Route::get('/', [
     'uses' => 'HomeController@index',
 ]);
 
-Route::get('/farms', [
+Route::get('/farms/{list?}', [
     'as'   => 'farms.index',
     'uses' => 'FarmsController@index',
 ]);
@@ -26,12 +26,17 @@ Route::get('/address/{farm}', [
     'uses' => 'FarmsController@show',
 ]);
 
-Route::get('/bitcorn', [
-    'as'   => 'pages.bitcorn',
-    'uses' => 'PagesController@showBitcorn',
+Route::get('/almanac', [
+    'as'   => 'pages.almanac',
+    'uses' => 'PagesController@showAlmanac',
 ]);
 
-Route::get('/crops', [
-    'as'   => 'pages.crops',
-    'uses' => 'PagesController@showCrops',
+Route::get('/game', [
+    'as'   => 'pages.game',
+    'uses' => 'PagesController@showGame',
+]);
+
+Route::get('/ico', [
+    'as'   => 'pages.ico',
+    'uses' => 'PagesController@showIco',
 ]);

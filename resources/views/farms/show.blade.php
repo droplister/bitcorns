@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="jumbotron text-center" style="background: url({{ $farm->image_url }}) no-repeat center center / cover;">
+<section class="jumbotron text-center" style="background: url({{ $farm->display_image_url }}) no-repeat center center / cover;">
     <div class="container">
         <h1 class="jumbotron-heading">{{ $farm->crops_owned_normalized }} {{ env('CROPS') }}</h1>
         <p class="lead text-muted">{{ $farm->description }}</p>

@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use JsonRPC\Client;
+use App\Jobs\UpdateFarmHistory;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -38,14 +39,19 @@ class UpdateFarms implements ShouldQueue
             'asset' => env('CROPS'),
         ]);
 
-        foreach($farms as $farm)
+        foreach($farms as $this_farm)
         {
-            \App\Farm::firstOrCreate([
-                'address' => $farm['address']
+            $farm = \App\Farm::firstOrCreate([
+                'address' => $this_farm['address']
             ],[
                 'image_url' => $this->basicImg(),
                 'description' => $this->cornyQuote(),
             ]);
+
+            if($farm->wasRecentlyCreated)
+            {
+                UpdateFarmHistory::dispatch($farm);
+            }
         }
     }
 

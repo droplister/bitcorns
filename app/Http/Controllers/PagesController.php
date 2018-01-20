@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     /**
-     * Show Bitcorn Harvesting
+     * Show Bitcorn Almanac
      *
      * @return \Illuminate\Http\Response
      */
-    public function showBitcorn(Request $request)
+    public function showAlmanac(Request $request)
     {
-        return view('pages.bitcorn');
+        return view('pages.almanac');
+    }
+
+    /**
+     * Show Game Rules & FAQ
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showGame(Request $request)
+    {
+        return view('pages.game');
     }
 
     /**
@@ -21,8 +31,8 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showCrops(Request $request)
+    public function showIco(Request $request)
     {
-        return view('pages.crops');
+        return view('pages.ico');
     }
 }

@@ -11,11 +11,33 @@ class FarmsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $list = null)
     {
-        $farms = \App\Farm::withCount('harvests')->orderBy('bitcorn_owned', 'desc')->paginate(40);
+        $farms = \App\Farm::withCount('harvests');
 
-        return view('farms.index', compact('farms'));
+        if($list)
+        {
+            if('most-harvested' === $list)
+            {
+                $farms = $farms->where('crops_owned', '>', 0)->orderBy('bitcorn_harvested', 'desc');
+            }
+            elseif('oldest-farms' === $list)
+            {
+                $farms = $farms->where('crops_owned', '>', 0)->orderBy('tx_index', 'asc');
+            }
+            elseif('no-croppers' === $list)
+            {
+                $farms = $farms->whereCropsOwned(0)->orderBy('bitcorn_owned', 'desc');
+            }
+        }
+        else
+        {
+            $farms = $farms->where('crops_owned', '>', 0)->orderBy('crops_owned', 'desc');
+        }
+
+        $farms = $farms->paginate(100);
+
+        return view('farms.index', compact('farms', 'list'));
     }
 
     /**

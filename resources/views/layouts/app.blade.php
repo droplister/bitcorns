@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', config('app.name', 'Laravel'))</title>
+    <title>@yield('title') &ndash; {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,9 +29,8 @@
             <div class="col-sm-4 py-4">
               <h4 class="text-white">Contact</h4>
               <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
+                <li><a href="https://twitter.com/{{ str_replace('@', '', env('TWITTER')) }}" class="text-white" target="_blank">Twitter: {{ env('TWITTER') }}</a></li>
+                <li><a href="https://t.me/{{ str_replace('@', '', env('TELEGRAM')) }}" class="text-white" target="_blank">Telegram: {{ env('TELEGRAM') }}</a></li>
               </ul>
             </div>
           </div>
@@ -43,17 +42,20 @@
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">Home</a>
+                <a class="nav-link" href="{{ url(route('home')) }}">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url(route('farms.index')) }}">Farms</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url(route('pages.ico')) }}">ICO</a>
+              </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="almanac_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Almanac</a>
+                <a class="nav-link dropdown-toggle" href="#" id="almanac_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                 <div class="dropdown-menu" aria-labelledby="almanac_dropdown">
-                  <a class="dropdown-item" href="{{ url(route('pages.bitcorn')) }}">Bitcorn Harvesting</a>
-                  <a class="dropdown-item" href="{{ url(route('pages.crops')) }}">Initial Corn Offering</a>
-                  <a class="dropdown-item" href="https://medium.com/@BitcornCrops" target="_blank">News and Updates</a>
+                  <a class="dropdown-item" href="{{ url(route('pages.game')) }}">Game Play F.A.Q.</a>
+                  <a class="dropdown-item" href="{{ url(route('pages.almanac')) }}">Bitcorn Almanac</a>
+                  <a class="dropdown-item" href="https://medium.com/@BitcornCrops" target="_blank">News &amp; Updates</a>
                 </div>
               </li>
             </ul>
