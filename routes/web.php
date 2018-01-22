@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', [
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', [
     'as'   => 'home',
     'uses' => 'HomeController@index',
 ]);
@@ -30,6 +34,10 @@ Route::get('/faq', [
     'as'   => 'pages.faq',
     'uses' => 'PagesController@showFaq',
 ]);
+
+Route::get('/ico.html', function () {
+    return redirect(route('pages.ico'));
+});
 
 Route::get('/ico', [
     'as'   => 'pages.ico',

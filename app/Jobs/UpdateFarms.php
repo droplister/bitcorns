@@ -68,12 +68,6 @@ class UpdateFarms implements ShouldQueue
             'http://bitcorns.com/img/farm-4.jpg',
             'http://bitcorns.com/img/farm-5.jpg',
             'http://bitcorns.com/img/farm-6.jpg',
-            'http://bitcorns.com/img/farm-7.jpg',
-            'http://bitcorns.com/img/farm-8.jpg',
-            'http://bitcorns.com/img/farm-9.jpg',
-            'http://bitcorns.com/img/farm-10.jpg',
-            'http://bitcorns.com/img/farm-11.jpg',
-            'http://bitcorns.com/img/farm-12.jpg',
         ];
 
         return $images[array_rand($images)];

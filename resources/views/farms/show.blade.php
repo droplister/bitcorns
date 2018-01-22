@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card border-light">
+            <div class="card border">
                 <div class="card-body">
                     <h5 class="card-title">{{ $farm->name }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ $farm->address }}</h6>

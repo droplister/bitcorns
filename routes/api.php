@@ -14,6 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/farms/{farm}', [
-    'as'   => 'chart',
-    'uses' => 'ChartController@show',
+    'as'   => 'charts',
+    'uses' => 'ChartsController@show',
 ]);

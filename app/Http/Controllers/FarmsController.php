@@ -40,7 +40,7 @@ class FarmsController extends Controller
             'most-bitcorn'   => 'Most Bitcorn',
             'most-crops'     => 'Most Crops',
             'most-harvested' => 'Most Harvested',
-            'no-crops'       => 'No Crops'
+            'no-crops'       => 'No Croppers',
         ];
 
         $farms = $farms->paginate(100);

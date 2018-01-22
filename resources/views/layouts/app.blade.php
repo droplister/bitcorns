@@ -85,7 +85,7 @@
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Bitcorns.com is an open-source platform and blockchain gaming experiment.</p>
+        <p>Bitcorns.com is an open-source platform and blockchain game experiment.</p>
         <p>Check out our <a href="{{ env('GITHUB') }}" target="_blank">Github repo</a> and read the <a href="{{ url(route('pages.faq')) }}">Game Play FAQ</a>.</p>
       </div>
     </footer>
