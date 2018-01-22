@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use JsonRPC\Client;
+use App\Jobs\UpdateTxDateTime;
 use App\Jobs\UpdateFarmHistoryExtended;
 
 use Illuminate\Bus\Queueable;
@@ -57,8 +58,8 @@ class UpdateFarmHistory implements ShouldQueue
         if(count($issuances))
         {
             $this->farm->update([
-                'type'     => 'issuer',
-                'name'     => 'Genesis Farm',
+                'type'     => 'issuance',
+                'name'     => 'Genesis',
                 'tx_index' => $issuances[0]['tx_index'],
             ]);
 
@@ -132,8 +133,8 @@ class UpdateFarmHistory implements ShouldQueue
             if(count($ico_orders) && count($dex_orders) && count($sends))
             {
                 $txs = [
-                    'ico'  => $ico_orders[0]['tx1_index'],
-                    'dex'  => $dex_orders[0]['tx1_index'],
+                    'ico_order'  => $ico_orders[0]['tx1_index'],
+                    'dex_order'  => $dex_orders[0]['tx1_index'],
                     'send' => $sends[0]['tx_index'],
                 ];
 
@@ -147,8 +148,8 @@ class UpdateFarmHistory implements ShouldQueue
             elseif(count($ico_orders) && count($dex_orders))
             {
                 $txs = [
-                    'ico'  => $ico_orders[0]['tx1_index'],
-                    'dex'  => $dex_orders[0]['tx1_index'],
+                    'ico_order'  => $ico_orders[0]['tx1_index'],
+                    'dex_order'  => $dex_orders[0]['tx1_index'],
                 ];
 
                 $min = $this->minArray($txs);
@@ -161,7 +162,7 @@ class UpdateFarmHistory implements ShouldQueue
             elseif(count($ico_orders) && count($sends))
             {
                 $txs = [
-                    'ico'  => $ico_orders[0]['tx1_index'],
+                    'ico_order'  => $ico_orders[0]['tx1_index'],
                     'send' => $sends[0]['tx_index'],
                 ];
 
@@ -175,7 +176,7 @@ class UpdateFarmHistory implements ShouldQueue
             elseif(count($dex_orders) && count($sends))
             {
                 $txs = [
-                    'dex'  => $dex_orders[0]['tx1_index'],
+                    'dex_order'  => $dex_orders[0]['tx1_index'],
                     'send' => $sends[0]['tx_index'],
                 ];
 
@@ -189,14 +190,14 @@ class UpdateFarmHistory implements ShouldQueue
             elseif(count($ico_orders))
             {
                 $this->farm->update([
-                    'type'     => 'ico',
+                    'type'     => 'ico_order',
                     'tx_index' => $ico_orders[0]['tx1_index'],
                 ]);
             }
             elseif(count($dex_orders))
             {
                 $this->farm->update([
-                    'type'     => 'dex',
+                    'type'     => 'dex_order',
                     'tx_index' => $dex_orders[0]['tx_index'],
                 ]);
             }
@@ -212,6 +213,8 @@ class UpdateFarmHistory implements ShouldQueue
                 UpdateFarmHistoryExtended::dispatch($this->farm);
             }
         }
+
+        UpdateTxDateTime::dispatch($this->farm);
     }
 
     private function minArray($array)

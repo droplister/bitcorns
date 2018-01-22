@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use JsonRPC\Client;
+use Faker\Factory as Faker;
 use App\Jobs\UpdateFarmHistory;
 
 use Illuminate\Bus\Queueable;
@@ -16,6 +17,7 @@ class UpdateFarms implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $counterparty;
+    protected $faker;
 
     /**
      * Counterparty API
@@ -26,6 +28,7 @@ class UpdateFarms implements ShouldQueue
     {
         $this->counterparty = new Client(env('CP_API'));
         $this->counterparty->authentication(env('CP_USER'), env('CP_PASS'));
+        $this->faker = Faker::create();
     }
 
     /**
@@ -44,6 +47,7 @@ class UpdateFarms implements ShouldQueue
             $farm = \App\Farm::firstOrCreate([
                 'address' => $this_farm['address']
             ],[
+                'name' => ucwords($this->faker->word()),
                 'image_url' => $this->basicImg(),
                 'description' => $this->cornyQuote(),
             ]);

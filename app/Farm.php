@@ -21,39 +21,20 @@ class Farm extends Model
      * @var array
      */
     protected $appends = [
-        'display_type', 'display_name', 'display_image_url',
+        'display_image_url',
         'has_crops', 'crops_owned_normalized',
         'has_bitcorn', 'has_harvested', 
     ];
 
     /**
-     * Display Type
+     * Set the farm name.
      *
-     * @var string
+     * @param  string  $value
+     * @return void
      */
-    public function getDisplayTypeAttribute()
+    public function setNameAttribute($value)
     {
-        switch ($this->type) {
-            case 'ico':
-                return 'Initial Corn Harvester';
-                break;
-            case 'issuer':
-                return 'Landed Aristocrat';
-                break;
-            default:
-                return '';
-                break;
-        }
-    }
-
-    /**
-     * Display Name
-     *
-     * @var string
-     */
-    public function getDisplayNameAttribute()
-    {
-        return $this->name ? $this->name : $this->address;
+        $this->attributes['name'] = "{$value} Farm";
     }
 
     /**

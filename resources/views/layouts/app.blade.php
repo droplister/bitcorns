@@ -4,17 +4,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Title Tags -->
     <title>@yield('title') &ndash; {{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="@yield('description')">
 
-    <!-- Styles -->
+    <!-- Stylesheets -->
+    <link href="{{ asset('favicon.ico') }}" rel="icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!--
+     /$$       /$$   /$$                                            
+    | $$      |__/  | $$                                            
+    | $$$$$$$  /$$ /$$$$$$    /$$$$$$$  /$$$$$$   /$$$$$$  /$$$$$$$ 
+    | $$__  $$| $$|_  $$_/   /$$_____/ /$$__  $$ /$$__  $$| $$__  $$
+    | $$  \ $$| $$  | $$    | $$      | $$  \ $$| $$  \__/| $$  \ $$
+    | $$  | $$| $$  | $$ /$$| $$      | $$  | $$| $$      | $$  | $$
+    | $$$$$$$/| $$  |  $$$$/|  $$$$$$$|  $$$$$$/| $$      | $$  | $$
+    |_______/ |__/   \___/   \_______/ \______/ |__/      |__/  |__/
+    -->
 </head>
 <body>
 <div id="app">
@@ -24,13 +33,14 @@
           <div class="row">
             <div class="col-sm-8 py-4">
               <h4 class="text-white">About</h4>
-              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+              <p class="text-muted">Bitcorns.com is an idle game of accumulation, similar to AdVenture Capitalist or Cookie Clicker, where the only objective is to accumulate BITCORN. To do so, you need CROPS. Over time, farmers regularly receive BITCORN rewards proportional to the number of CROPS they farm. And that's it. That's the game.</p>
             </div>
             <div class="col-sm-4 py-4">
               <h4 class="text-white">Contact</h4>
               <ul class="list-unstyled">
-                <li><a href="https://twitter.com/{{ str_replace('@', '', env('TWITTER')) }}" class="text-white" target="_blank">Twitter: {{ env('TWITTER') }}</a></li>
-                <li><a href="https://t.me/{{ str_replace('@', '', env('TELEGRAM')) }}" class="text-white" target="_blank">Telegram: {{ env('TELEGRAM') }}</a></li>
+                <li><a href="{{ env('TELEGRAM') }}" class="text-white" target="_blank">Telegram</a></li>
+                <li><a href="{{ env('TWITTER') }}" class="text-white" target="_blank">Twitter</a></li>
+                <li><a href="mailto:{{ env('EMAIL') }}" class="text-white">E-mail</a></li>
               </ul>
             </div>
           </div>
@@ -38,7 +48,7 @@
       </div>
       <div class="navbar navbar-dark navbar-expand bg-dark">
         <div class="container d-flex justify-content-between">
-          <a href="{{ url('/') }}" class="navbar-brand">&#x1f33d; {{ config('app.name', 'Laravel') }}</a>
+          <a href="{{ url('/') }}" class="navbar-brand">&#x1f33d; <span class="d-none d-sm-inline">{{ config('app.name', 'Laravel') }}</span></a>
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
@@ -48,13 +58,12 @@
                 <a class="nav-link" href="{{ url(route('farms.index')) }}">Farms</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url(route('pages.ico')) }}">ICO</a>
+                <a class="nav-link" href="{{ url(route('pages.ico')) }}">I.C.O.</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="almanac_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                <a class="nav-link dropdown-toggle" href="{{ url(route('pages.faq')) }}" id="almanac_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                 <div class="dropdown-menu" aria-labelledby="almanac_dropdown">
-                  <a class="dropdown-item" href="{{ url(route('pages.game')) }}">Game Play F.A.Q.</a>
-                  <a class="dropdown-item" href="{{ url(route('pages.almanac')) }}">Bitcorn Almanac</a>
+                  <a class="dropdown-item" href="{{ url(route('pages.faq')) }}">Game Play F.A.Q.</a>
                   <a class="dropdown-item" href="https://medium.com/@BitcornCrops" target="_blank">News &amp; Updates</a>
                 </div>
               </li>
@@ -76,8 +85,8 @@
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p>Bitcorns.com is an open-source platform and blockchain gaming experiment.</p>
+        <p>Check out our <a href="{{ env('GITHUB') }}" target="_blank">Github repo</a> and read the <a href="{{ url(route('pages.faq')) }}">Game Play FAQ</a>.</p>
       </div>
     </footer>
 

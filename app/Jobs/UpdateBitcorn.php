@@ -69,6 +69,7 @@ class UpdateBitcorn implements ShouldQueue
             ]);
 
             $farm->update([
+                'bitcorn_harvests' => $farm->harvests()->count(),
                 'bitcorn_harvested' => $farm->harvests()->sum('bitcorn'),
             ]);
         }

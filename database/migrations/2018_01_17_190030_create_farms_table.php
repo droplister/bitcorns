@@ -24,6 +24,7 @@ class CreateFarmsTable extends Migration
             $table->string('image_url');
             $table->bigInteger('crops_owned')->unsigned()->default(0);
             $table->bigInteger('bitcorn_owned')->unsigned()->default(0);
+            $table->bigInteger('bitcorn_harvests')->unsigned()->default(0);
             $table->bigInteger('bitcorn_harvested')->unsigned()->default(0);
             $table->timestamps();
         });

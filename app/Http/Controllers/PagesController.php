@@ -7,23 +7,13 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     /**
-     * Show Bitcorn Almanac
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showAlmanac(Request $request)
-    {
-        return view('pages.almanac');
-    }
-
-    /**
      * Show Game Rules & FAQ
      *
      * @return \Illuminate\Http\Response
      */
-    public function showGame(Request $request)
+    public function showFaq(Request $request)
     {
-        return view('pages.game');
+        return view('pages.faq');
     }
 
     /**

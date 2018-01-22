@@ -1,19 +1,78 @@
 @extends('layouts.app')
 
-@section('title', 'Initial Corn Offering')
+@section('title', 'I.C.O.')
 
 @section('content')
 <div class="container">
 
-    <br />
-    <br />
+    <a href="{{ ENV('TELEGRAM') }}" class="btn btn-lg btn-primary mt-2 ml-2 pull-right" target="_blank"> 
+        <i class="fa fa-telegram" aria-hidden="true"></i>
+    </a>
 
-    <h1 class="display-4">Initial Corn Offering</h1>
-    <p class="lead">Starting April 1st, 2018, as part of the first-ever idle game on the blockchain, addresses farming CROPS will begin harvesting BITCORN.</p>
+    <a href="{{ ENV('TWITTER') }}" class="btn btn-lg btn-primary mt-2 pull-right" target="_blank"> 
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+    </a>
 
-    <br />
+    <h1 class="display-4 mt-5 mb-2">
+        I.C.O.
+    </h1>
 
-    <img src="{{ asset('img/bitcorn-harvest.jpg') }}" alt="Bitcorn Harvest" class="img-thumbnail img-fluid" />
+    <p class="lead">As part of the first-ever idle game played on top of the blockchain, addresses farming CROPS regularly harvest BITCORN.</p>
+
+    <img src="{{ asset('img/bitcorn-harvest.jpg') }}" alt="Bitcorn Harvest" class="img-thumbnail img-fluid mt-3" />
+
+    <h2 class="display-4 mt-5">
+        Initial Crop Offering
+    </h2>
+
+    <table class="table mt-5 mb-5">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">January</th>
+                <th scope="col">April</th>
+                <th scope="col">July</th>
+                <th scope="col">October</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">2018</th>
+                <td>---</td>
+                <td>26,250</td>
+                <td>26,250</td>
+                <td>26,250</td>
+            </tr>
+            <tr>
+                <th scope="row">2019</th>
+                <td>26,250</td>
+                <td>13,125</td>
+                <td>13,125</td>
+                <td>13,125</td>
+            </tr>
+            <tr>
+                <th scope="row">2020</th>
+                <td>13,125</td>
+                <td>7,875</td>
+                <td>7,875</td>
+                <td>7,875</td>
+            </tr>
+            <tr>
+                <th scope="row">2021</th>
+                <td>7,875</td>
+                <td>5,250</td>
+                <td>5,250</td>
+                <td>5,250</td>
+            </tr>
+            <tr>
+                <th scope="row">2022</th>
+                <td>7,875</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+            </tr>
+        </tbody>
+    </table>
 
             <br />
             <p><img src="http://bitcorns.com/assets/img/cornrise.jpg" class="img-thumbnail" /></p>

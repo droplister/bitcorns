@@ -11,33 +11,41 @@ class FarmsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $list = null)
+    public function index(Request $request)
     {
+        $request->validate([
+            'sort' => 'sometimes|in:most-bitcorn,most-crops,most-harvested,no-crops',
+        ]);
+
+        $sort = $request->input('sort', 'most-bitcorn');
+
         $farms = \App\Farm::withCount('harvests');
 
-        if($list)
-        {
-            if('most-harvested' === $list)
-            {
+        switch ($sort) {
+            case 'most-crops':
+                $farms = $farms->where('crops_owned', '>', 0)->orderBy('crops_owned', 'desc');
+                break;
+            case 'most-harvested':
                 $farms = $farms->where('crops_owned', '>', 0)->orderBy('bitcorn_harvested', 'desc');
-            }
-            elseif('oldest-farms' === $list)
-            {
-                $farms = $farms->where('crops_owned', '>', 0)->orderBy('tx_index', 'asc');
-            }
-            elseif('no-croppers' === $list)
-            {
-                $farms = $farms->whereCropsOwned(0)->orderBy('bitcorn_owned', 'desc');
-            }
+                break;
+            case 'no-crops':
+                $farms = $farms->whereCropsOwned(0)->orderBy('bitcorn_owned', 'asc');
+                break;
+            default:
+                $farms = $farms->where('crops_owned', '>', 0)->orderBy('bitcorn_owned', 'desc');
+                break;
         }
-        else
-        {
-            $farms = $farms->where('crops_owned', '>', 0)->orderBy('crops_owned', 'desc');
-        }
+
+        $navigation = [
+            'most-bitcorn'   => 'Most Bitcorn',
+            'most-crops'     => 'Most Crops',
+            'most-harvested' => 'Most Harvested',
+            'no-crops'       => 'No Crops'
+        ];
 
         $farms = $farms->paginate(100);
 
-        return view('farms.index', compact('farms', 'list'));
+        return view('farms.index', compact('farms', 'sort', 'navigation'));
     }
 
     /**
