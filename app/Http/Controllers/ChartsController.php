@@ -6,7 +6,7 @@ use JsonRPC\Client;
 
 use Illuminate\Http\Request;
 
-class ChartController extends Controller
+class ChartsController extends Controller
 {
     protected $counterblock;
 
@@ -31,13 +31,20 @@ class ChartController extends Controller
         $crops = $this->counterblock->execute('get_balance_history', [
             'asset' => 'CROPS',
             'addresses' => [$farm->address],
+            'start_ts' => 1385856000,
+            'end_ts' => \Carbon\Carbon::now()->timestamp,
         ]);
 
         $bitcorn = $this->counterblock->execute('get_balance_history', [
             'asset' => 'BITCORN',
             'addresses' => [$farm->address],
+            'start_ts' => 1385856000,
+            'end_ts' => \Carbon\Carbon::now()->timestamp,
         ]);
 
-        return compact('crops', 'bitcorn');
+        return [
+            'CROPS'   => $crops[0]['data'],
+            'BITCORN' => $bitcorn[0]['data'],
+        ];
     }
 }

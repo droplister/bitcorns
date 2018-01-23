@@ -83,7 +83,7 @@
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">
-          <a href="#">Back to top</a>
+          <a href="#" class="d-none d-sm-inline">Back to top</a>
         </p>
         <p>Bitcorns.com is an open-source platform and blockchain game experiment.</p>
         <p>Check out our <a href="{{ env('GITHUB') }}" target="_blank">Github repo</a> and read the <a href="{{ url(route('pages.faq')) }}">Game Play FAQ</a>.</p>
@@ -91,6 +91,16 @@
     </footer>
 
 </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112477384-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112477384-4');
+</script>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
