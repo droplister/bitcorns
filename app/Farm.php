@@ -12,7 +12,7 @@ class Farm extends Model
      * @var array
      */
     protected $fillable = [
-        'tx_index', 'address', 'type', 'name', 'description', 'location', 'image_url', 'crops_owned', 'bitcorn_owned', 'bitcorn_harvests', 'bitcorn_harvested',
+        'tx_index', 'address', 'type', 'name', 'description', 'location', 'image_url', 'crops_owned', 'bitcorn_owned', 'bitcorn_harvests', 'bitcorn_harvested', 'created_at',
     ];
 
     /**

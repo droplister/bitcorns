@@ -50,6 +50,7 @@ class UpdateFarms implements ShouldQueue
                 'name' => ucwords($this->faker->word()),
                 'image_url' => $this->basicImg(),
                 'description' => $this->cornyQuote(),
+                'location' => $this->faker->city . ', ' . $this->faker->country,
             ]);
 
             if($farm->wasRecentlyCreated)
@@ -62,12 +63,18 @@ class UpdateFarms implements ShouldQueue
     private function basicImg()
     {
         $images = [
-            'http://bitcorns.com/img/farm-1.jpg',
-            'http://bitcorns.com/img/farm-2.jpg',
-            'http://bitcorns.com/img/farm-3.jpg',
-            'http://bitcorns.com/img/farm-4.jpg',
-            'http://bitcorns.com/img/farm-5.jpg',
-            'http://bitcorns.com/img/farm-6.jpg',
+            asset('/img/farm-1.jpg'),
+            asset('/img/farm-2.jpg'),
+            asset('/img/farm-3.jpg'),
+            asset('/img/farm-4.jpg'),
+         // asset('/img/farm-5.jpg'),
+            asset('/img/farm-6.jpg'),
+            asset('/img/farm-7.jpg'),
+            asset('/img/farm-8.jpg'),
+            asset('/img/farm-9.jpg'),
+            asset('/img/farm-10.jpg'),
+            asset('/img/farm-11.jpg'),
+            asset('/img/farm-12.jpg'),
         ];
 
         return $images[array_rand($images)];
@@ -83,7 +90,6 @@ class UpdateFarms implements ShouldQueue
             'Michael Pollan'        => 'Corn is a greedy crop, as farmers will tell you.',
             'Masanobu Fukuoka'      => 'The ultimate goal of farming is not the growing of crops, but the cultivation and perfection of human beings.',
             'Cato the Elder'        => 'It is thus with farming: if you do one thing late, you will be late in all your work.',
-            'Joannes Stobaeus'      => 'Farming is a most senseless pursuit, a mere laboring in a circle. You sow that you may reap, and then you reap that you may sow. Nothing ever comes of it.',
             'Arthur Keith'          => 'The discovery of agriculture was the first big step toward a civilized life.',
             'Samuel Johnson'        => 'Agriculture not only gives riches to a nation, but the only riches she can call her own.',
             'Sam Farr'              => 'To make agriculture sustainable, the grower has got to be able to make a profit.',

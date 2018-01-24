@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', [
+Route::get('/', [
     'as'   => 'home',
     'uses' => 'HomeController@index',
 ]);
@@ -30,14 +26,15 @@ Route::get('/farms/{farm}', [
     'uses' => 'FarmsController@show',
 ]);
 
+Route::get('/almanac', [
+    'as'   => 'pages.almanac',
+    'uses' => 'PagesController@showAlmanac',
+]);
+
 Route::get('/faq', [
     'as'   => 'pages.faq',
     'uses' => 'PagesController@showFaq',
 ]);
-
-Route::get('/ico.html', function () {
-    return redirect(route('pages.ico'));
-});
 
 Route::get('/ico', [
     'as'   => 'pages.ico',

@@ -18,11 +18,11 @@
 
     @foreach($farms as $farm)
 
-        <div class="col-12 col-sm-6 col-md-3 mt-4 mb-2">
+        <div class="col-12 col-sm-6 col-md-4 mt-4 mb-2">
             @include('partials.farm')
         </div>
 
-        @if($loop->iteration % 4 === 0 && ! $loop->last)
+        @if($loop->iteration % 3 === 0 && ! $loop->last)
             <div class="w-100"></div>
         @endif
 

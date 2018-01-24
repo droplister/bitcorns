@@ -13029,6 +13029,11 @@ a.text-dark:hover {
   }
 }
 
+.jumbotron h1 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .jumbotron-heading {
   font-weight: 300;
 }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -12,7 +13,7 @@
 
     <!-- Stylesheets -->
     <link href="{{ asset('favicon.ico') }}" rel="icon">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?time={{ \Carbon\Carbon::now()->timestamp }}" rel="stylesheet">
 
     <!--
      /$$       /$$   /$$                                            
@@ -51,19 +52,19 @@
           <a href="{{ url('/') }}" class="navbar-brand">&#x1f33d; <span class="d-none d-sm-inline">{{ config('app.name', 'Laravel') }}</span></a>
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
+              <li class="nav-item d-none d-sm-inline">
                 <a class="nav-link" href="{{ url(route('home')) }}">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url(route('farms.index')) }}">Farms</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url(route('pages.ico')) }}">I.C.O.</a>
+                <a class="nav-link" href="{{ url(route('pages.ico')) }}">ICO</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url(route('pages.faq')) }}" id="almanac_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                 <div class="dropdown-menu" aria-labelledby="almanac_dropdown">
-                  <a class="dropdown-item" href="{{ url(route('pages.faq')) }}">Game Play F.A.Q.</a>
+                  <a class="dropdown-item" href="{{ url(route('pages.almanac')) }}">Farmers' Almanac</a>
                   <a class="dropdown-item" href="https://medium.com/@BitcornCrops" target="_blank">News &amp; Updates</a>
                 </div>
               </li>
@@ -85,14 +86,14 @@
         <p class="float-right">
           <a href="#" class="d-none d-sm-inline">Back to top</a>
         </p>
-        <p>Bitcorns.com is an open-source platform and blockchain game experiment.</p>
-        <p>Check out our <a href="{{ env('GITHUB') }}" target="_blank">Github repo</a> and read the <a href="{{ url(route('pages.faq')) }}">Game Play FAQ</a>.</p>
+        <p>Check out our <a href="{{ env('GITHUB') }}" target="_blank">Github</a> and read the <a href="{{ url(route('pages.faq')) }}">FAQ page</a>.</p>
       </div>
     </footer>
 
 </div>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112477384-4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -101,8 +102,5 @@
 
   gtag('config', 'UA-112477384-4');
 </script>
-
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

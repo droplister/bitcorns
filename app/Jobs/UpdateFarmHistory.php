@@ -58,9 +58,10 @@ class UpdateFarmHistory implements ShouldQueue
         if(count($issuances))
         {
             $this->farm->update([
-                'type'     => 'issuance',
-                'name'     => 'Genesis',
-                'tx_index' => $issuances[0]['tx_index'],
+                'type'      => 'issuance',
+                'name'      => 'Genesis',
+                'tx_index'  => $issuances[0]['tx_index'],
+                'image_url' => asset('/img/farm-5.jpg'),
             ]);
 
             $issuer = true;

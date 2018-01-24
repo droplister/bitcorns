@@ -6,28 +6,10 @@
 
 <section class="jumbotron text-center" style="background: url({{ $farm->display_image_url }}) no-repeat center center / cover;">
     <div class="container">
-        <h1 class="jumbotron-heading" style="text-transform: uppercase;">{{ $farm->name }}</h1>
-        <h2 class="jumbotron-heading text-muted">{{ $farm->crops_owned_normalized }} {{ env('CROPS') }}</h2>
+        <h1>{{ $farm->name }}</h1>
+        <h2 class="jumbotron-heading text-muted">{{ $farm->location }}</h2>
     </div>
 </section>
-
-<br />
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card border">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $farm->name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $farm->address }}</h6>
-                    <p class="card-text">{{ $farm->description }}</p>
-               </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br />
 
 <div class="content">
     <div class="container">
@@ -37,15 +19,23 @@
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="historyTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="deed-tab" data-toggle="tab" href="#deed" role="tab" aria-controls="deed" aria-selected="true">Deed</a>
+                                <a class="nav-link active" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="true">History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="deed-tab" data-toggle="tab" href="#deed" role="tab" aria-controls="deed" aria-selected="true">Deed</a>
                             </li>
                         </ul>
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="historyTabContent">
-                            <div class="tab-pane fade show active" id="deed" role="tabpanel" aria-labelledby="deed-tab">
+                            <div class="tab-pane fade show active" id="history" role="tabpanel" aria-labelledby="history-tab">
+                                <h5 class="card-title">Established {{ $farm->created_at->format('M d, Y') }}</h5>
+                                <p class="card-text">{{ $farm->description }}</p>
+                                <a href="https://xchain.io/address/{{ $farm->address }}" class="btn btn-primary" target="_blank"><i class="fa fa-search"></i> View Address</a>
+                            </div>
+                            <div class="tab-pane fade" id="deed" role="tabpanel" aria-labelledby="deed-tab">
                                 <h5 class="card-title">Farm Deed #{{ $farm->tx_index }}</h5>
-                                <p class="card-text">{{ $farm->name }} was established {{ $farm->created_at->diffForHumans() }} by way of CROPS {{ $farm->type }}.</p>
+                                <p class="card-text">{{ $farm->name }} was established {{ $farm->created_at->diffForHumans() }} by a CROPS {{ $farm->type }}.</p>
                                 <a href="https://xchain.io/tx/{{ $farm->tx_index }}" class="btn btn-primary" target="_blank"><i class="fa fa-search"></i> View Transaction</a>
                             </div>
                         </div>
@@ -75,9 +65,7 @@
                                 <br /> 
                                 <br /> 
                                 <br /> 
-                                <br /> 
-                                <br /> 
-                                <br /> 
+                                <p class="text-center">[BALANCE CHART HERE]</p>
                                 <br /> 
                                 <br /> 
                                 <br /> 
@@ -93,9 +81,41 @@
                                 <br /> 
                                 <br /> 
                                 <br /> 
+                                <p class="text-center">[BALANCE CHART HERE]</p>
                                 <br /> 
                                 <br /> 
                                 <br /> 
+                                <br /> 
+                                <br /> 
+                                <br /> 
+                                <br /> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="achievementTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="achievement-tab" data-toggle="tab" href="#achievement" role="tab" aria-controls="achievement" aria-selected="true">Achievements</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="achievementTabContent">
+                            <div class="tab-pane fade show active" id="achievement" role="tabpanel" aria-labelledby="achievement-tab">
+                                <br /> 
+                                <br /> 
+                                <br /> 
+                                <br /> 
+                                <br /> 
+                                <br /> 
+                                <br /> 
+                                <p class="text-center">[ACTIVITY LIST HERE]</p>
                                 <br /> 
                                 <br /> 
                                 <br /> 

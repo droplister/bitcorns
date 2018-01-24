@@ -13,6 +13,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $farms = \App\Farm::withCount('harvests')
+            ->where('crops_owned', '>', 0)
+            ->orderBy('bitcorn_owned', 'desc')
+            ->paginate(3);
+
+        return view('home', compact('farms'));
     }
 }

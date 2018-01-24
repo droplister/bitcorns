@@ -185,11 +185,13 @@ class UpdateTxDateTime implements ShouldQueue
         } catch(InvalidJsonFormatException $e) {
             // Exception
         }
+
         if(isset($raw['time']))
         {
             $this->farm->update([
                 'created_at' => \Carbon\Carbon::createFromTimestamp($raw['time']),
             ]);
         }
+
      }
 }
