@@ -6,7 +6,7 @@
 <div class="container">
 
     <h1 class="display-4 mt-5 mb-4">
-        <span class="d-none d-sm-inline">Bitcorn</span> Farms
+        Bitcorn Farms
         <small class="lead">
             {{ $farms->total() }} Worldwide
         </small>

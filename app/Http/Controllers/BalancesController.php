@@ -6,7 +6,7 @@ use JsonRPC\Client;
 
 use Illuminate\Http\Request;
 
-class ChartsController extends Controller
+class BalancesController extends Controller
 {
     protected $counterblock;
 

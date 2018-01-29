@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', [
+Route::get('/', function () {
+    return redirect(route('pages.ico'));
+});
+
+Route::get('/home', [
     'as'   => 'home',
     'uses' => 'HomeController@index',
 ]);
@@ -24,6 +28,21 @@ Route::get('/farms', [
 Route::get('/farms/{farm}', [
     'as'   => 'farms.show',
     'uses' => 'FarmsController@show',
+]);
+
+Route::put('/farms/{farm}', [
+    'as'   => 'farms.update',
+    'uses' => 'FarmsController@update',
+]);
+
+Route::put('/farms/{farm}/image', [
+    'as'   => 'image.update',
+    'uses' => 'ImageController@update',
+]);
+
+Route::get('/farms/{farm}/edit', [
+    'as'   => 'farms.edit',
+    'uses' => 'FarmsController@edit',
 ]);
 
 Route::get('/almanac', [
@@ -40,3 +59,7 @@ Route::get('/ico', [
     'as'   => 'pages.ico',
     'uses' => 'PagesController@showIco',
 ]);
+
+Route::get('/ico.html', function () {
+    return redirect(route('pages.ico'));
+});

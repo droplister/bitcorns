@@ -1,18 +1,24 @@
 @extends('layouts.app')
 
-@section('title', $farm->name)
+@section('title', $farm->display_name)
 
 @section('content')
 
 <section class="jumbotron text-center" style="background: url({{ $farm->display_image_url }}) no-repeat center center / cover;">
+    @if($farm->has_crops)
+    <a href="{{ url(route('farms.edit', ['farm' => $farm->address])) }}" class="btn btn-sm btn-light">
+        <i class="fa fa-edit"></i> Edit
+    </a>
+    @endif
     <div class="container">
-        <h1>{{ $farm->name }}</h1>
-        <h2 class="jumbotron-heading text-muted">{{ $farm->location }}</h2>
+        <h1>{{ $farm->display_name }}</h1>
+        <h4 class="jumbotron-heading text-muted">{{ $farm->display_location }}</h4>
     </div>
 </section>
 
 <div class="content">
     <div class="container">
+        @if($farm->has_crops)
         <div class="row">
             <div class="col">
                 <div class="card text-center">
@@ -43,7 +49,8 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        @endif
+        <div class="row{{ $farm->has_crops ? ' mt-5' : '' }}">
             <div class="col">
                 <div class="card text-center">
                     <div class="card-header">
@@ -95,6 +102,7 @@
                 </div>
             </div>
         </div>
+        @if($farm->has_crops)
         <div class="row mt-5">
             <div class="col">
                 <div class="card text-center">
@@ -129,6 +137,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 
 @endsection

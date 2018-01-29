@@ -8,7 +8,7 @@
         </a>
         <h4 class="card-title">
             <a href="{{ url(route('farms.show', ['show' => $farm->address])) }}">
-                {{ $farm->name }}
+                {{ $farm->display_name }}
             </a>
         </h4>
         <p class="card-text">

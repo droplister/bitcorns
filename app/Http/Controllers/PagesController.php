@@ -14,7 +14,7 @@ class PagesController extends Controller
     public function showAlmanac(Request $request)
     {
         $request->validate([
-            'crops' => 'sometimes|numeric|min:0.001|max:100',
+            'crops' => 'sometimes|numeric|min:0.00000039|max:100',
         ]);
 
         $crops = $request->input('crops', 0.001);

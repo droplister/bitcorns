@@ -47,7 +47,7 @@ class UpdateFarms implements ShouldQueue
             $farm = \App\Farm::firstOrCreate([
                 'address' => $this_farm['address']
             ],[
-                'name' => ucwords($this->faker->word()),
+                'name' => ucwords($this->faker->word()) . ' Farm',
                 'image_url' => $this->basicImg(),
                 'description' => $this->cornyQuote(),
                 'location' => $this->faker->city . ', ' . $this->faker->country,
@@ -63,18 +63,18 @@ class UpdateFarms implements ShouldQueue
     private function basicImg()
     {
         $images = [
-            asset('/img/farm-1.jpg'),
-            asset('/img/farm-2.jpg'),
-            asset('/img/farm-3.jpg'),
-            asset('/img/farm-4.jpg'),
-         // asset('/img/farm-5.jpg'),
-            asset('/img/farm-6.jpg'),
-            asset('/img/farm-7.jpg'),
-            asset('/img/farm-8.jpg'),
-            asset('/img/farm-9.jpg'),
-            asset('/img/farm-10.jpg'),
-            asset('/img/farm-11.jpg'),
-            asset('/img/farm-12.jpg'),
+            '/img/farm-1.jpg',
+            '/img/farm-2.jpg',
+            '/img/farm-3.jpg',
+            '/img/farm-4.jpg',
+         // '/img/farm-5.jpg',
+            '/img/farm-6.jpg',
+            '/img/farm-7.jpg',
+            '/img/farm-8.jpg',
+            '/img/farm-9.jpg',
+            '/img/farm-10.jpg',
+            '/img/farm-11.jpg',
+            '/img/farm-12.jpg',
         ];
 
         return $images[array_rand($images)];

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Blocktrail\SDK\BlocktrailSDK;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Farm extends Model
@@ -12,7 +14,7 @@ class Farm extends Model
      * @var array
      */
     protected $fillable = [
-        'tx_index', 'address', 'type', 'name', 'description', 'location', 'image_url', 'crops_owned', 'bitcorn_owned', 'bitcorn_harvests', 'bitcorn_harvested', 'created_at',
+        'tx_index', 'address', 'type', 'name', 'description', 'location', 'image_url', 'crops_owned', 'bitcorn_owned', 'bitcorn_harvested', 'bitcorn_harvests', 'created_at',
     ];
 
     /**
@@ -21,20 +23,29 @@ class Farm extends Model
      * @var array
      */
     protected $appends = [
-        'display_image_url',
+        'display_name', 'display_location', 'display_image_url',
         'has_crops', 'crops_owned_normalized',
         'has_bitcorn', 'has_harvested', 
     ];
 
     /**
-     * Set the farm name.
+     * Display Name
      *
-     * @param  string  $value
-     * @return void
+     * @var string
      */
-    public function setNameAttribute($value)
+    public function getDisplayNameAttribute()
     {
-        $this->attributes['name'] = "{$value} Farm";
+        return $this->has_crops ? $this->name : 'NO CROPPER';
+    }
+
+    /**
+     * Display Location
+     *
+     * @var string
+     */
+    public function getDisplayLocationAttribute()
+    {
+        return $this->has_crops ? $this->location : 'Szaboan Desert';
     }
 
     /**
@@ -44,7 +55,7 @@ class Farm extends Model
      */
     public function getDisplayImageUrlAttribute()
     {
-        return $this->crops_owned > 0 ? $this->image_url : 'http://bitcorns.com/img/farm-0.jpg';
+        return $this->has_crops ? asset($this->image_url) : asset('/img/farm-0.jpg');
     }
 
     /**
@@ -64,7 +75,7 @@ class Farm extends Model
      */
     public function getCropsOwnedNormalizedAttribute()
     {
-        return number_format($this->crops_owned / 100000000, 8);
+        return BlocktrailSDK::toBTC($this->crops_owned);
     }
 
     /**

@@ -6,4 +6,9 @@
         </a>
     </li>
     @endforeach
+    <li class="nav-item d-none d-sm-block ml-auto">
+        <a class="nav-link" href="#comingsoon">
+            Map View
+        </a>
+    </li>
 </ul>

@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/farms/{farm}', [
-    'as'   => 'charts',
-    'uses' => 'ChartsController@show',
+Route::get('/balances/{farm}', [
+    'as'   => 'balances.show',
+    'uses' => 'BalancesController@show',
 ]);

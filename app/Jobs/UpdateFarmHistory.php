@@ -59,7 +59,7 @@ class UpdateFarmHistory implements ShouldQueue
         {
             $this->farm->update([
                 'type'      => 'issuance',
-                'name'      => 'Genesis',
+                'name'      => 'Genesis Farm',
                 'tx_index'  => $issuances[0]['tx_index'],
                 'image_url' => asset('/img/farm-5.jpg'),
             ]);

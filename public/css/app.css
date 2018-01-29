@@ -12953,12 +12953,13 @@ a.text-dark:hover {
 }
 
 .jumbotron {
-  min-height: 20rem;
+  min-height: 12rem;
   border-radius: 0;
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   margin-bottom: 0;
   background-color: #fff;
+  position: relative;
 }
 
 .jumbotron p:last-child {
@@ -12967,13 +12968,21 @@ a.text-dark:hover {
 
 @media screen and (min-width: 1200px) {
   .jumbotron {
+    min-height: 20rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .jumbotron {
     min-height: 24rem;
     padding-top: 12rem;
     padding-bottom: 12rem;
   }
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1650px) {
   .jumbotron {
     min-height: 30rem;
     padding-top: 15rem;
@@ -12981,7 +12990,7 @@ a.text-dark:hover {
   }
 }
 
-@media screen and (min-width: 1650px) {
+@media screen and (min-width: 1800px) {
   .jumbotron {
     min-height: 36rem;
     padding-top: 18rem;
@@ -12989,7 +12998,7 @@ a.text-dark:hover {
   }
 }
 
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 1950px) {
   .jumbotron {
     min-height: 40rem;
     padding-top: 20rem;
@@ -12997,7 +13006,7 @@ a.text-dark:hover {
   }
 }
 
-@media screen and (min-width: 1950px) {
+@media screen and (min-width: 2100px) {
   .jumbotron {
     min-height: 46rem;
     padding-top: 23rem;
@@ -13005,7 +13014,7 @@ a.text-dark:hover {
   }
 }
 
-@media screen and (min-width: 2100px) {
+@media screen and (min-width: 2250px) {
   .jumbotron {
     min-height: 50rem;
     padding-top: 25rem;
@@ -13013,19 +13022,11 @@ a.text-dark:hover {
   }
 }
 
-@media screen and (min-width: 2250px) {
+@media screen and (min-width: 2400px) {
   .jumbotron {
     min-height: 54rem;
     padding-top: 27rem;
     padding-bottom: 27rem;
-  }
-}
-
-@media screen and (min-width: 2400px) {
-  .jumbotron {
-    min-height: 60rem;
-    padding-top: 30rem;
-    padding-bottom: 30rem;
   }
 }
 
@@ -13036,6 +13037,12 @@ a.text-dark:hover {
 
 .jumbotron-heading {
   font-weight: 300;
+}
+
+.jumbotron .btn {
+  top: 15px;
+  right: 15px;
+  position: absolute;
 }
 
 .jumbotron .container {

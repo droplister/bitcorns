@@ -30,13 +30,13 @@
 <div id="app">
     <header>
       <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-sm-8 py-4">
-              <h4 class="text-white">About</h4>
-              <p class="text-muted">Bitcorns.com is an idle game of accumulation, similar to AdVenture Capitalist or Cookie Clicker, where the only objective is to accumulate BITCORN. To do so, you need CROPS. Over time, farmers regularly receive BITCORN rewards proportional to the number of CROPS they farm. And that's it. That's the game.</p>
+              <h4 class="text-white">Bitcorn Crops</h4>
+              <p class="text-muted">Bitcorns is an idle game of accumulation, similar to AdVenture Capitalist, where the only objective is to accumulate BITCORN. BITCORN cannot be bought, rather, it gets harvested by bitcoin addresses ("farms") proportionate to their share of 100 CROPS. Deceptively simple, accumulating BITCORN takes an amount of restraint most people do not possess.</p>
             </div>
-            <div class="col-sm-4 py-4">
+            <div class="col-sm-4 py-4 d-none d-sm-inline">
               <h4 class="text-white">Contact</h4>
               <ul class="list-unstyled">
                 <li><a href="{{ env('TELEGRAM') }}" class="text-white" target="_blank">Telegram</a></li>
@@ -48,11 +48,11 @@
         </div>
       </div>
       <div class="navbar navbar-dark navbar-expand bg-dark">
-        <div class="container d-flex justify-content-between">
+        <div class="container-fluid d-flex justify-content-between">
           <a href="{{ url('/') }}" class="navbar-brand">&#x1f33d; <span class="d-none d-sm-inline">{{ config('app.name', 'Laravel') }}</span></a>
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item d-none d-sm-inline">
+              <li class="nav-item">
                 <a class="nav-link" href="{{ url(route('home')) }}">Home</a>
               </li>
               <li class="nav-item">
@@ -86,7 +86,7 @@
         <p class="float-right">
           <a href="#" class="d-none d-sm-inline">Back to top</a>
         </p>
-        <p>Check out our <a href="{{ env('GITHUB') }}" target="_blank">Github</a> and read the <a href="{{ url(route('pages.faq')) }}">FAQ page</a>.</p>
+        <p>Check out our <a href="{{ env('GITHUB') }}" target="_blank">Github repo</a> and read the <a href="{{ url(route('pages.faq')) }}">FAQ page</a>.</p>
       </div>
     </footer>
 

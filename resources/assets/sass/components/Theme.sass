@@ -5,46 +5,47 @@
     display: initial
 
 .jumbotron
-  min-height: 20rem
+  min-height: 12rem
   border-radius: 0
-  padding-top: 10rem
-  padding-bottom: 10rem
+  padding-top: 6rem
+  padding-bottom: 6rem
   margin-bottom: 0
   background-color: #fff
+  position: relative
   p:last-child
     margin-bottom: 0
   @media screen and (min-width: 1200px)
+    min-height: 20rem
+    padding-top: 10rem
+    padding-bottom: 10rem
+  @media screen and (min-width: 1500px)
     min-height: 24rem
     padding-top: 12rem
     padding-bottom: 12rem
-  @media screen and (min-width: 1500px)
+  @media screen and (min-width: 1650px)
     min-height: 30rem
     padding-top: 15rem
     padding-bottom: 15rem
-  @media screen and (min-width: 1650px)
+  @media screen and (min-width: 1800px)
     min-height: 36rem
     padding-top: 18rem
     padding-bottom: 18rem
-  @media screen and (min-width: 1800px)
+  @media screen and (min-width: 1950px)
     min-height: 40rem
     padding-top: 20rem
     padding-bottom: 20rem
-  @media screen and (min-width: 1950px)
+  @media screen and (min-width: 2100px)
     min-height: 46rem
     padding-top: 23rem
     padding-bottom: 23rem
-  @media screen and (min-width: 2100px)
+  @media screen and (min-width: 2250px)
     min-height: 50rem
     padding-top: 25rem
     padding-bottom: 25rem
-  @media screen and (min-width: 2250px)
+  @media screen and (min-width: 2400px)
     min-height: 54rem
     padding-top: 27rem
     padding-bottom: 27rem
-  @media screen and (min-width: 2400px)
-    min-height: 60rem
-    padding-top: 30rem
-    padding-bottom: 30rem
 
 .jumbotron h1
   font-weight: 700
@@ -52,6 +53,11 @@
 
 .jumbotron-heading
   font-weight: 300
+
+.jumbotron .btn
+  top: 15px
+  right: 15px
+  position: absolute
 
 .jumbotron .container
   max-width: 40rem

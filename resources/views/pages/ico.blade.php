@@ -21,7 +21,7 @@
 
     <p class="lead">
         Bitcorns is an idle game of accumulation, similar to AdVenture Capitalist, where the only objective is to accumulate BITCORN. <br class="d-block d-sm-none" /> <br class="d-block d-sm-none" />
-        BITCORN cannot be bought. It only gets harvested by farmers on Bitcorns.com proportionate to their share of 100 CROPS. <br class="d-block d-sm-none" /> <br class="d-block d-sm-none" />
+        BITCORN cannot be bought, rather, it gets harvested by bitcoin addresses ("farms") proportionate to their share of 100 CROPS. <br class="d-block d-sm-none" /> <br class="d-block d-sm-none" />
         Deceptively simple, accumulating BITCORN takes an amount of restraint most people do not possess.
     </p>
 
